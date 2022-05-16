@@ -40,16 +40,17 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
-            <td>1</td>
-            <td>Kellys</td>
-            <td>Kellys@gmail.com</td>
-            <td>7898768</td>
-            <td>Pune</td>
-            <td>Pasta/Pizza</td>
+        <tr *ngFor="let item of getAllDataModel"> 
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.email}}</td>
+            <td>{{item.mobile}}</td>
+            <td>{{item.address}}</td>
+            <td>{{item.services}}</td>
             <td>
-                <button class="btn btn-info">Edit</button>&nbsp;
-                <button class="btn btn-info">Delete</button>
+                <button class="btn btn-info" (click) = "onEditRestaurant(item)">Edit</button>&nbsp;
+                <button class="btn btn-info" (click) = "onEditRestaurant(item)">Update </button>&nbsp;
+                <button class="btn btn-info" (click) = "deleteData(item)">Delete</button>
             </td>
         </tr>
     </tbody>
@@ -66,9 +67,9 @@
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
+          <h5 class="modal-title" id="exampleModalLabel">Enter Restaurant Details </h5>
+          <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="false">&times;</span>
           </button>
         </div>
         <div class="modal-body">
@@ -92,17 +93,17 @@
             </div>
             <div class="form-group">
               <label for="exampleInputPassword1">Service</label>
-              <input type="email" formControlName="service" class="form-control" id="exampleInputPassword1" placeholder="Enter Service">
+              <input type="email" formControlName="services" class="form-control" id="exampleInputPassword1" placeholder="Enter Service">
             </div>
-            <div class="form-group form-check">
-              <input type="checkbox" class="form-check-input" id="exampleCheck1">
-              <label class="form-check-label" for="exampleCheck1">Check me out</label>
-            </div>
-            <button type="submit" class="btn btn-primary">Submit</button>
+                <!-- <div class="form-group form-check">
+                <input type="checkbox" class="form-check-input" id="exampleCheck1">
+                <label class="form-check-label" for="exampleCheck1">Check me out</label>
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button> -->
           </form>
         </div>
         <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-dismiss="modal">Add Details</button>
+          <button type="button" class="btn btn-secondary" (click)="addRestaurant()" data-dismiss="modal">Add Details</button>
           <button type="button" class="btn btn-primary">Close</button>
         </div>
       </div>
